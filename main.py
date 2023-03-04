@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 # Configure this environment variable via app.yaml
 # CLOUD_STORAGE_BUCKET = os.environ['CLOUD_STORAGE_BUCKET']
-CLOUD_STORAGE_BUCKET = 'sacred-alloy-379104-urlsigner'
+CLOUD_STORAGE_BUCKET = 'gke-domo'
 credentials = service_account.Credentials.from_service_account_file("credentials.json")
 
 @app.route('/')
@@ -76,4 +76,4 @@ def server_error(e: Union[Exception, int]) -> str:
 if __name__ == '__main__':
     # This is used when running locally. Gunicorn is used to run the
     # application on Google App Engine. See entrypoint in app.yaml.
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(host='localhost', port=8080, debug=True)
